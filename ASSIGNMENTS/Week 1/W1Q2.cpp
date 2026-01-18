@@ -16,7 +16,7 @@ int main(){
  Gross Salary
  Name of employee with highest paid salary
  Basic salary of an employee given his Id OR name*/
-int n,i,j,max=0;
+int n,i,j,maxIndex=0;
 cout<<"Enter number of employees: ";
 cin>>n;
 employee e[n];
@@ -33,11 +33,11 @@ for(i=0;i<n;i++){
     e[i].gross=e[i].basicSalary+e[i].hra+e[i].da;
 }
 for(j=0;j<n;j++){
-    if(e[max].gross<=e[j].gross){
-        max=j;
+    if(e[maxIndex].gross<=e[j].gross){
+        maxIndex=j;
     }
 }
-cout<<"Employee with Highest paid salary: "<<e[max].name<<endl;
+cout<<"Employee with Highest paid salary: "<<e[maxIndex].name<<endl;
 employee search;
     bool found=0;
     cout<<"Enter employee ID to search:"<<endl;

@@ -12,7 +12,7 @@ void Perimeter(rectangle r){
 }
 int main(){
     rectangle r1;
-    cout<<"Enter length and breadth"<<endl;
+    cout<<"Enter length and breadth: "<<endl;
     cin>>r1.length>>r1.breadth;
     Area(r1);
     Perimeter(r1);
