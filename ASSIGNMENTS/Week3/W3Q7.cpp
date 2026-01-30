@@ -4,7 +4,8 @@ using namespace std;
 class Demo  
 {  
 private:  
-//static data members static int X;  
+//static data members 
+static int X;  
 static int Y; 
 public:  
 //static member function  
@@ -14,8 +15,8 @@ cout<<"Value of X: " << X <<endl; cout<<"Value of Y: " << Y <<endl;
 }  
 };  
 //static data members initializations  
-int Demo :: X =10;  
-int Demo :: Y =20;  
+int Demo :: X =10;  //VALUES OF STATIC ARE SET
+int Demo :: Y =20; //VALUES OF STATIC ARE SET 
 int main()  
 {  
 Demo OB; 
@@ -25,5 +26,15 @@ OB.Print();
 //accessing class name with class name  
 cout<<"Printing through class name:"<<endl;  
 Demo::Print();  
-return 0;  
-}*/
+return 0;  WEIRD
+}
+output: 
+Printing through object name:
+Value of X: 10
+Value of Y: 20
+Printing through class name:
+Value of X: 10
+Value of Y: 20
+
+// class bhi bula skta hai static function koo
+*/

@@ -10,14 +10,12 @@ class Rect{
     float l,h;
     public:
     Rect(float length,float height){
-        this->l=length;
-        this->h=height;
-        cout<<"Length is "<<length<<endl;
-        cout<<"Breadth is "<<height<<endl;
+        l=length;
+        h=height;
     }
-    void area(){
-        float A=l*h;
-        cout<<"Area of rectangle is "<<A<<endl;
+    
+    float area(){
+        return l*h;
     }
 };
 class Circle{
@@ -25,18 +23,20 @@ class Circle{
     float r;
     public:
     Circle(float R){
-        this->r=R;
-        cout<<"Radius is "<<R<<endl;
+        r=R;
     }
-    void area(){
-        float A=3.14*r*r;
-        cout<<"Area of Circle is "<<A<<endl;
+    
+    float area(){
+        const float pie=3.14159;
+        float A=pie*r*r;
+        return A;
     }
 };
 int main() {
     Rect P(20,30);
-    P.area();
+    cout<<"Area of rectangle is "<<P.area()<<endl;
     Circle Q(10);
-    Q.area();
+    cout<<"Area of Circle is "<<Q.area()<<endl;
     return 0;
-}//done
+}
+//9/10

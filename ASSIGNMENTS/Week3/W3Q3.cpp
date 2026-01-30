@@ -17,33 +17,35 @@ Also include:
 #include <iostream>
 #include <string>
 using namespace std;
-class STUDENT{
+class Student{
 private:
     int Enrolment_no;
     float CGPA;
     string name,branch;
 public:
-    STUDENT(){//initialise all
+    Student(){//initialise all
     Enrolment_no = 1;
     name = "Unknown";
     branch = "CSE";
     CGPA = 6;
     }
-    STUDENT(int x,string y,float z){//branch predefined
+    Student(int x,string y,float z){//branch predefined
         Enrolment_no=x;
         CGPA=z;
         name=y;
         branch = "CSE";
     }
-    STUDENT(int x,string y,string w,float z){//set values to all
+    Student(int x,string y,string w,float z){//set values to all
         Enrolment_no=x;
         CGPA=z;
         name=y;
         branch = w;
     }
-    void setter(){
-    cin>>CGPA;
-    }
+    void setCGPA(float z){ CGPA=z;}
+    void setName(string n){ name=n; }
+    void setBranch(string b){branch=b; }
+    void setEnrolmentNumber(int n){Enrolment_no=n; }
+
     int getEnrolmentNumber() { return Enrolment_no; }
     string getName() { return name; }
     string getBranch() { return branch; }
@@ -56,18 +58,18 @@ public:
     }
 };
 int main(){
-    STUDENT s1(2338,"Purvit","ECE",7.9);
-    STUDENT s2(2339,"Mehak",8.5);
-    STUDENT s3;
+    Student s1(2338,"Purvit","ECE",7.9);
+    Student s2(2339,"Mehak",8.5);
+    Student s3;
     cout<<"Student 1 Details:"<<endl;
     s1.display();
     cout<<"Student 2 Details:"<<endl;
     s2.display();
     cout<<"Student 3 Details:"<<endl;
     s3.display();
-    cout<<"Enter Updated CGPA of Student 1"<<endl;
-    s1.setter();
+    s1.setCGPA(8.7);
     cout<<"Updated Student 1 Details:"<<endl;
     s1.display();
     return 0;
 }
+// 9/10

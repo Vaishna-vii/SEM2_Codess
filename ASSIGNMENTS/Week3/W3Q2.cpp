@@ -7,10 +7,10 @@ iii. Create two objects:
 #include <iostream>
 using namespace std;
 class Second{
-    public:
     int personID;
-    Second(){
-        personID=0;
+    public:
+    Second(){//default constructor
+        personID=2248;
     }
     Second(int x){
         personID=x;
@@ -21,9 +21,9 @@ class Second{
 };
 int main(){
     Second obj1;
-    obj1.personID=2248;
     obj1.printPersonID();
     Second obj2(1246);
     obj2.printPersonID();
     return 0;
 }
+//9/10

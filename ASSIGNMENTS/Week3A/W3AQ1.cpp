@@ -8,3 +8,7 @@ The system should allow member objects to be created in different ways:
 Provide suitable constructors, accessor and mutator functions. In the driver program, create
 multiple member objects, update the number of books issued for one member, and display the
 complete member details.*/
+class library{
+int memberID,memberLevel,totalBooksIssued;
+char* memberName;
+};

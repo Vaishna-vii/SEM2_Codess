@@ -18,34 +18,22 @@ float price;
 int Num_copies_issued,Num_copies;
 // this-> to be used when local variable has same number as class data member!!
 public:
-    Book(){//Constructor!
-        int NUM,NC,NCI;
-        string NAME, AUTH, PUBL;
-        float PR;
-        cout<<"Enter Book Number:"; cin>>NUM;
-        this->book_number=NUM;
-        cout<<"Enter Book Name:"; 
-        cin.ignore();//only call before first getlline
-        getline(cin,NAME);
-        this->book_name=NAME;
-        cout<<"Enter Author:"; 
-        getline(cin,AUTH);
-        this->author=AUTH;
-        cout<<"Enter Publisher:"; 
-        getline(cin,PUBL);
-        this->publisher=PUBL;
-        cout<<"Enter Price:"; cin>>PR;
-        this->price=PR;
-        cout<<"Enter No. of copies issued:"; cin>>NCI;
-        this->Num_copies_issued=NCI;
-        cout<<"Enter No.of copies:"; cin>>NC;
-        this->Num_copies=NC;
-}
-    void DISPLAY();
-    void ISSUE();
-    void RETURN();
+    //Constructor not needed!
+    void setter(int bno, string bname, string au,string pub,float price, int NCI, int TC);
+    void display();
+    void issue();
+    void Return();
 };
-void Book::DISPLAY(){
+void Book::setter(int bno, string bname, string au,string pub,float price, int NCI, int TC){
+    book_number=bno;
+    book_name=bname;
+    author=au;
+    publisher=pub;
+    this->price=price;
+    Num_copies_issued=NCI;
+    Num_copies=TC;
+}
+void Book::display(){
     cout<<"Book Number:"<<book_number<<endl;
     cout<<"Book Name:"<<book_name<<endl;
     cout<<"Author:"<<author<<endl;
@@ -54,16 +42,17 @@ void Book::DISPLAY(){
     cout<<"No. of copies issued:"<<Num_copies_issued<<endl;
     cout<<"No.of copies:"<<Num_copies<<endl;
 }
-void Book::ISSUE(){
-    if(Num_copies>0){
+void Book::issue(){
+    int available=Num_copies-Num_copies_issued;
+    if(available>0){
         Num_copies_issued++;
         cout<<"Book issue successful"<<endl;
     } else {
         cout<<"Book not available"<<endl;
     }
 }
-void Book::RETURN(){
-    if(Num_copies_issued>0){
+void Book::Return(){
+    if(Num_copies_issued>0){//checking whether issued or not in the first place
         Num_copies_issued--;
         cout<<"Book return successful"<<endl;
     } else {
@@ -71,13 +60,14 @@ void Book::RETURN(){
 }}
 int main(){
     Book B1;
-    B1.ISSUE();
+    B1.setter(2230,"Ikigai","Hary Henson","Scholastic",29.99,20,30);
+    B1.issue();
     cout<<"==========After issuing==========="<<endl;
-    B1.DISPLAY();
-    B1.RETURN();
+    B1.display();
+    B1.Return();
     cout<<"=========After returning==========="<<endl;
-    B1.DISPLAY();
+    B1.display();
     return 0;
 }
 
-//
+//9/10
