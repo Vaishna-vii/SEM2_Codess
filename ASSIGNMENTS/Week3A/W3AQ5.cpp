@@ -6,3 +6,9 @@ iii. Default constructor: length = 1, breadth = 1, PlotName = "Unknown".
 iv. Destructor to release dynamic memory.
  Include getter/setter functions to calculate area.
  Demonstrate creating plots, modifying dimensions, and displaying area.*/
+#include<iostream>
+using namespace std;
+int main(){
+
+    return 0;
+}

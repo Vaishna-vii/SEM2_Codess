@@ -1,7 +1,4 @@
 //Assignment 2
- #include <iostream>
- using namespace std;
- int main (){
 /*Dynamic Memory Allocation & Pointer Arithmetic-----------
 1. Assume there are three integer elements in the array A= {10,100,200} that are stored at
 addresses 0xbfa088b0, 0xbfa088b4, 0xbfa088b8
@@ -17,8 +14,11 @@ Sample output after decrementing pointer: Address of var[3] = 0xbfdb70f8
 Value of var[3] = 200
 Address of var[2] = 0xbfdb70f4 Value of var[2] = 100
 Address of var[1] = 0xbfdb70f0 Value of var[1] = 10*/
+ #include <iostream>
+ using namespace std;
+ int main (){
 int i;
-int A[3]={10,100,200};
+int* A=new int[3]{10,100,200};
 int *ptr=A;//starts at A[0]
 cout<<"incrementing pointer:"<<endl;
 for(i=0;i<3;i++){
@@ -35,3 +35,4 @@ ptr--;
 }
     return 0;
  }
+ //9/10
