@@ -14,53 +14,56 @@ o the difference between prefix and postfix operator behavior.
 #include <iostream>
 using namespace std;
 class Battery{
-    int battery;
+    int level;
 public:
     Battery(int A=0){
-    //if(A<101&&A>=0) battery=A;//weirdESTTT, cutoff krte na
-    if(A>100) battery=100;
-    else if(A<0) battery=0;
-    else battery=A;
+    //if(A<101&&A>=0) level=A;//weirdESTTT, cutoff krte na
+    if(A>100) level=100;
+    else if(A<0) level=0;
+    else level=A;
     }
     void getter(){
-        cout<<"Battery status:"<<battery<<endl;
+        cout<<"Battery status:"<<level<<endl;
     }
     Battery& operator++(){//prefix coz we pass by reference, return mei this keyword and clamp as per required
-        battery+=5;
-        if(battery>100) battery=100;
+        level+=5;
+        if(level>100) level=100;
         return *this;
     }
     Battery& operator--(){//prefix
-        battery-=5;
-        if(battery<0) battery=0;
+        level-=5;
+        if(level<0) level=0;
         return *this;
     }
     Battery operator++(int){//postfix coz there is a DUMMY parameter
         Battery temp=*this;
-        battery+=5;
-        if(battery>100) battery=100;
+        level+=5;
+        if(level>100) level=100;
         return temp;
     }
     Battery operator--(int){//postfix
         Battery temp=*this;
-        battery-=5;
-        if(battery<0) battery=0;
+        level-=5;
+        if(level<0) level=0;
         return temp;
     }
 };
 int main(){
-    Battery PQ(40),XY(80);
+    Battery PQ(40);
     cout<<"Initially:"<<endl;
     PQ.getter();
-    XY.getter();
-    cout<<"\nPostfix:"<<endl;
+
+    cout<<"\nPostfix Charging:"<<endl;
     (PQ++).getter();
-    (XY--).getter();
-    cout<<"\nPrefix:"<<endl;
+    cout<<"\nPrefix Charging:"<<endl;
     (++PQ).getter();
-    (--XY).getter(); //i sense errorfulness
+
+    cout<<"\nPrefix Discharging:"<<endl;
+    (--PQ).getter();
+    cout<<"\nPostfix Discharging:"<<endl;
+    (PQ--).getter();
+
     cout<<"\nFinale:"<<endl;
     PQ.getter();
-    XY.getter();
     return 0;
 }
