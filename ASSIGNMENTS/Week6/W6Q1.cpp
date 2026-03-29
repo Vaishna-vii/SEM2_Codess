@@ -66,7 +66,77 @@ o Employee ID
 iv. Task 4: Observe and Record Outputs
  Execute the program.
  Verify:
-o Public members are accessible through objects
+o Public members are acessible through objects
 o Protected members are accessible only inside derived classes
 o Private members are not accessible in derived classes
  Record observations in the result section.*/
+
+#include<iostream>
+using namespace std;
+class Person{
+    int aadhaarNo;
+    protected:  int age;
+public:
+    string name;
+    void setPersonDetails(int a, int b, string c){
+        aadhaarNo=a;   age=b;    name=c;
+    }
+    void displayPersonDetails(){
+        cout<<"Name  "<<name<<endl;
+        cout<<"Age  "<<age<<endl;
+        cout<<"Aadhaar No  "<<aadhaarNo<<endl;
+    }
+};
+class Student: public Person{
+public:
+    int rollNo;
+    void displayStudentDetails(){
+        cout<<"Name  "<<name<<endl;
+        cout<<"Age  "<<age<<endl;
+        //cout<<"Aadhaar No  "<<aadhaarNo<<endl;
+        //Private members of base class are never inherited.
+        cout<<"Roll No  "<<rollNo<<endl;
+    }
+};
+class GraduateStudent: public Student{
+public:
+    string researchTopic;
+    void displayGraduateDetails(){
+        cout<<"Name  "<<name<<endl;
+        cout<<"Age  "<<age<<endl;
+        cout<<"Roll No  "<<rollNo<<endl;
+        cout<<"Research Topic  "<<researchTopic<<endl;
+    }
+};
+class Employee: public Person{
+public:
+    int employeeId;
+    void displayEmployeeDetails(){
+        cout<<"Name  "<<name<<endl;
+        cout<<"Age  "<<age<<endl;
+        cout<<"Employee ID  "<<employeeId<<endl;
+    }
+};
+int main(){
+    cout<<"---------Student Info---------"<<endl;
+    Student S0011;
+    S0011.setPersonDetails(24212523,17,"Purvit");
+    S0011.rollNo=22031032;
+    S0011.displayStudentDetails();
+
+    cout<<"\n\n---------Graduate Student Info---------"<<endl;
+    GraduateStudent G22110;
+    G22110.setPersonDetails(324235,25,"Samriddhi");
+    G22110.rollNo=21034243;
+    G22110.researchTopic="Electricity and Environment";
+    G22110.displayGraduateDetails();
+
+    cout<<"\n\n---------Employee Info---------"<<endl;
+    Employee E0034;
+    E0034.setPersonDetails(42146643,26,"Vijaya");
+    E0034.employeeId=3532677;
+    E0034.displayEmployeeDetails();
+
+    return 0;
+}
+//9/10

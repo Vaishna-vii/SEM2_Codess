@@ -50,3 +50,58 @@ cout << name << " ";
 cout << endl;
 return 0;
 }*/
+
+#include<iostream>
+#include <vector>
+#include <unordered_map>
+#include <unordered_set>
+using namespace  std;
+class ThroneInheritance{
+public:
+    string king;
+    unordered_map<string, vector<string>> children;
+    unordered_set<string> dead;
+    ThroneInheritance(string kingName){
+        king = kingName;
+    }
+    void birth(string parent, string child){
+        children[parent].push_back(child);
+    }
+    void death(string name){
+        dead.insert(name);
+    }
+    void updating(string person, vector<string> &order){
+        if(dead.find(person) == dead.end())
+            order.push_back(person);
+
+        for(string child : children[person])
+            updating(child, order);
+    }
+     vector<string> getInheritanceOrder(){
+        vector<string> order;
+        updating(king, order);
+        return order;
+    }
+};
+int main(){
+    ThroneInheritance kingdom("King");
+    kingdom.birth("King", "Charles");
+    kingdom.birth("King", "Anne");
+    kingdom.birth("Charles", "William");
+    kingdom.birth("William", "George");
+    cout << "Current Inheritance Order:\n";
+    vector<string> order1 = kingdom.getInheritanceOrder();
+    for(string name : order1) {
+        cout << name << " ";
+    }
+    cout << endl;
+
+    kingdom.death("Charles");
+    cout << "Updated Inheritance Order:\n";
+    vector<string> order2 = kingdom.getInheritanceOrder();
+    for(string name : order2) {
+        cout << name << " ";
+    }
+    cout << endl;
+    return 0;
+}

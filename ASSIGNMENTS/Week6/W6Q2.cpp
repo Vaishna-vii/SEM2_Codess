@@ -4,58 +4,60 @@ a)
 using namespace std;
 class Vehicle {
 public:
-Vehicle() {
+Vehicle() { //constructor
 cout << "Vehicle ";
 }
-~Vehicle() {
+~Vehicle() { //destructor
 cout << "~Vehicle ";
 }
 };
-class Car : public Vehicle {
+class Car : public Vehicle { //publically inherited
 public:
-Car() {
+Car() { //constructor
 cout << "Car ";
 }
-~Car() {
+~Car() { //destructor
 cout << "~Car ";
 }
 };
-class ElectricCar : public Car {
+class ElectricCar : public Car { //publically inherited of car
 public:
 
-ElectricCar() {
+ElectricCar() { //constructor
 cout << "ElectricCar ";
 }
-~ElectricCar() {
+~ElectricCar() { //destructor
 cout << "~ElectricCar ";
 }
 };
 int main() {
 ElectricCar e;
 return 0;
-}
+}/*
+output:
+Vehicle Car ElectricCar ~ElectricCar ~Car ~Vehicle
 b)
 #include <iostream>
 using namespace std;
 class Vehicle {
 public:
-Vehicle() {
+Vehicle() { //constructor
 cout << "Vehicle ";
 }
-~Vehicle() {
+~Vehicle() { //destructor
 cout << "~Vehicle ";
 }
 };
-class Car : private Vehicle {
+class Car : private Vehicle { //privately inherited
 public:
-Car() {
+Car() { //constructor
 cout << "Car ";
 }
 };
-class ElectricCar : public Car {
+class ElectricCar : public Car { //publically inherited
 public:
 
-ElectricCar() {
+ElectricCar() { //constructor
 cout << "ElectricCar ";
 }
 };
@@ -64,6 +66,8 @@ ElectricCar e;
 Vehicle v = e;
 return 0;
 }
+output:
+error coz vehicle is inaccesible base of electric car
 c)
 #include <iostream>
 using namespace std;
@@ -81,6 +85,7 @@ void showB() {
 cout << x << " ";
 cout << y << " ";
 // cout << z << " ";
+//commented coz z is private member of base A
 }
 };
 class C : public B {
@@ -96,4 +101,7 @@ C obj;
 obj.showB();
 obj.showC();
 return 0;
-}*/
+}
+output:
+10 20 10 20
+*/
